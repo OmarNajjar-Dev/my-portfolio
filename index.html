@@ -1,65 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Professional portfolio website showcasing skills and projects">
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Professional portfolio website showcasing skills and projects"
+    />
+
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="animations.css">
-    
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="animations.css" />
+
     <!-- EmailJS -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    
+
     <!-- International Phone Input -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/css/intlTelInput.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/css/intlTelInput.css"
+    />
     <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/intlTelInput.min.js"></script>
-    
+
     <title>Portfolio</title>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Header Section -->
-    <header>
-        <nav>
-            <!-- Navigation links will be added here -->
-        </nav>
+    <header class="fade-in-left">
+      <h3 id="profile-name">John Doe</h3>
+      <nav aria-label="Main Navigation">
+        <ul>
+          <li>
+            <a
+              class="nav-link"
+              href="https://github.com/OmarNajjar-Dev"
+              target="_blank"
+            >
+              <img
+                id="github-icon"
+                src="images/github.svg"
+                alt="GitHub Icon"
+              />GitHub
+            </a>
+          </li>
+          <li>
+            <a
+              class="nav-link"
+              href="https://www.linkedin.com/in/omar-najjar-0a768933a"
+              target="_blank"
+            >
+              <img
+                id="linkedin-icon"
+                src="images/linkedin.svg"
+                alt="LinkedIn Icon"
+              />LinkedIn
+            </a>
+          </li>
+          <li>
+            <a class="email-link" href="mailto:najjar_omar@outlook.com">
+              <img
+                id="email-icon"
+                src="images/email.svg"
+                alt="Email Icon"
+              />Email
+            </a>
+          </li>
+        </ul>
+      </nav>
     </header>
 
     <!-- Main Content -->
     <main>
-        <!-- Hero Section -->
-        <section id="home" class="hero-section">
-            <!-- Hero content will be added here -->
-        </section>
+      <!-- Hero Section -->
+      <section id="home" class="hero-section">
+        <!-- Hero content will be added here -->
+      </section>
 
-        <!-- Skills Section -->
-        <section id="skills" class="skills-section">
-            <!-- Skills content will be dynamically added -->
-        </section>
+      <!-- Skills Section -->
+      <section id="skills" class="skills-section">
+        <!-- Skills content will be dynamically added -->
+      </section>
 
-        <!-- Projects Section -->
-        <section id="projects" class="projects-section">
-            <!-- Projects will be dynamically added -->
-        </section>
+      <!-- Projects Section -->
+      <section id="projects" class="projects-section">
+        <!-- Projects will be dynamically added -->
+      </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="contact-section">
-            <form id="contact-form">
-                <!-- Contact form will be added here -->
-            </form>
-        </section>
+      <!-- Contact Section -->
+      <section id="contact" class="contact-section">
+        <form id="contact-form">
+          <!-- Contact form will be added here -->
+        </form>
+      </section>
     </main>
 
     <!-- Custom JavaScript -->
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
