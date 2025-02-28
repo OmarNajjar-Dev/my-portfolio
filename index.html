@@ -33,7 +33,7 @@
 
   <body>
     <!-- Header Section - Contains navigation and profile info -->
-    <header>
+    <header class="fade-in-left">
       <h3>John Doe</h3>
       <nav>
         <ul>
@@ -53,7 +53,11 @@
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img src="images/linkedin.svg" alt="LinkedIn" />
+              <img
+                src="images/linkedin.svg"
+                alt="LinkedIn"
+                class="linkedin-logo"
+              />
               <span>LinkedIn</span>
             </a>
           </li>
@@ -70,9 +74,16 @@
     <!-- Main Content Area -->
     <main>
       <!-- Hero Section - Introduction and main call-to-action -->
-      <section id="hero">
+      <section id="hero" class="fade-in-up">
         <div>
-          <h1>Hi, I'm John <img src="images/waving-hand.svg" alt="Waving Hand" class="waving-hand"></h1>
+          <h1>
+            Hi, I'm John
+            <img
+              src="images/waving-hand.svg"
+              alt="Waving Hand"
+              class="waving-hand fade-in-up animation-step-1"
+            />
+          </h1>
           <p>
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Atque
             excepturi quia blanditiis culpa, nisi in perferendis. Facere, eum
@@ -107,13 +118,21 @@
           <img
             src="images/hero-headshot.webp"
             alt="Professional headshot of John Doe"
-            class="profile-picture"
+            class="profile-picture fade-in-up delay-extra-long"
           />
         </div>
       </section>
 
-      <section id="skills">
-        <!-- Skills content will be dynamically added -->
+      <!-- Skills Section -->
+      <section id="skills" class="fade-in-up">
+        <h2>Skills</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
+          cumque numquam qui, quis molestiae hic cupiditate porro eligendi nam
+          nesciunt fugiat? Vel quam, enim pariatur hic corrupti assumenda eius
+          deleniti.
+        </p>
+        <ul class="skills-list fade-in-up"></ul>
       </section>
 
       <section id="projects">

@@ -22,39 +22,23 @@
   }
 }
 
-/* Individual Element Animations */
-header h3 {
+.fade-in-left {
   opacity: 0;
-  animation: fadeInLeft 0.6s ease forwards;
-  animation-delay: 0.2s;
+  visibility: hidden;
 }
 
-header nav {
-  opacity: 0;
-  animation: fadeInLeft 0.6s ease forwards; 
-  animation-delay: 0.4s;
+.fade-in-left.visible {
+  visibility: visible;
+  animation: fadeInLeft 0.6s forwards;
 }
 
-#hero h1 {
+.fade-in-up {
   opacity: 0;
-  animation: fadeInUp 0.6s ease forwards;
-  animation-delay: 0.2s;
+  transform: translateY(20px);
+  visibility: hidden;
 }
 
-#hero p {
-  opacity: 0;
-  animation: fadeInUp 0.6s ease forwards;
-  animation-delay: 0.4s;
-}
-
-#hero nav {
-  opacity: 0;
-  animation: fadeInUp 0.6s ease forwards;
-  animation-delay: 0.6s;
-}
-
-#hero .profile-picture {
-  opacity: 0;
-  animation: fadeInUp 0.6s ease forwards;
-  animation-delay: 0.8s;
+.fade-in-up.visible {
+  visibility: visible;
+  animation: fadeInUp 0.6s forwards;
 }

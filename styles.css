@@ -4,7 +4,7 @@
   --text-color: #1a1c20;
   --background-color: #eeeff1;
   --white: #ffffff;
-  --gray: #666666;
+  --gray: lightgray;
   --transition: all 0.3s ease;
 }
 
@@ -120,7 +120,7 @@ nav img {
   color: var(--primary-color);
   text-decoration: none;
   padding: 0.2rem 0.4rem;
-  border-radius: 5px;
+  border-radius: 0.3em;
   gap: 0.25rem;
   transition: var(--transition);
 }
@@ -139,6 +139,46 @@ nav img {
 #hero nav a:hover img {
   filter: invert(6%) sepia(4%) saturate(1300%) hue-rotate(180deg)
     brightness(95%) contrast(100%);
+}
+
+/* Skills Section */
+#skills h2,
+#skills p {
+  text-align: center;
+}
+
+#skills p,
+#skills span {
+  font-size: 14px;
+}
+
+#skills ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5em;
+  gap: 1em;
+}
+
+#skills li {
+  border: 1px solid var(--gray);
+  padding: 0.5em 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 160px;
+  gap: 0.5em;
+  border-radius: 0.2em;
+  transition: var(--transition);
+}
+
+#skills li:hover {
+  transform: translateY(-5px);
+}
+
+#skills img {
+  width: 25px;
+  height: 25px;
 }
 
 /* Responsive Design */
@@ -162,5 +202,10 @@ nav img {
 
   #hero h1 {
     font-size: 1.75rem;
+  }
+
+  #skills ul {
+    flex-direction: column;
+    align-items: center;
   }
 }
