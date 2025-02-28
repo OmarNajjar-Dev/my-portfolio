@@ -132,8 +132,8 @@ nav img {
 }
 
 #hero nav a:hover {
-  color: var(--text-color);
   border-color: var(--text-color);
+  color: var(--text-color);
 }
 
 #hero nav a:hover img {
