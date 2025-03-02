@@ -99,17 +99,29 @@ const countryCodes = [
 // Phone Input Initialization & Handling
 // ==========================================
 
+let globalIti;
+
 function initializePhoneInput() {
   const phoneInput = document.querySelector("#phone");
   if (!phoneInput) return;
 
   const iti = window.intlTelInput(phoneInput, {
-    initialCountry: "us",
+    initialCountry: "lb",
+    preferredCountries: ["lb", "us", "ca"],
     utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/utils.js",
+    separateDialCode: true
   });
+
+  globalIti = iti;
 
   handlePhoneValidation(phoneInput, iti);
   handlePhoneCountryUpdate(phoneInput, iti);
+
+  // Set initial value with country code
+  const countryData = iti.getSelectedCountryData();
+  if (!phoneInput.value && countryData) {
+    phoneInput.value = countryData.dialCode;
+  }
 }
 
 function handlePhoneValidation(phoneInput, iti) {
@@ -125,18 +137,32 @@ function handlePhoneValidation(phoneInput, iti) {
 }
 
 function handlePhoneCountryUpdate(phoneInput, iti) {
-  phoneInput.addEventListener("input", function () {
-    const number = iti.getNumber();
+  // Handle country selection change
+  phoneInput.addEventListener("countrychange", function() {
     const countryData = iti.getSelectedCountryData();
+    const currentValue = phoneInput.value.trim();
+    // Only set dial code if field is empty
+    if (!currentValue) {
+      phoneInput.value = countryData.dialCode;
+    }
+  });
 
-    if (number) {
-      const foundCountry = countryCodes.find((country) =>
-        number.startsWith(country.dialCode.replace("+", ""))
-      );
+  // Handle manual input
+  phoneInput.addEventListener("input", function() {
+    let number = phoneInput.value.trim();
+    
+    // Remove any existing plus sign
+    if (number.startsWith("+")) {
+      number = number.substring(1);
+    }
+    
+    // Try to find country by dial code
+    const foundCountry = countryCodes.find(country => 
+      number.startsWith(country.dialCode.substring(1))
+    );
 
-      if (foundCountry && foundCountry.code.toLowerCase() !== countryData.iso2) {
-        iti.setCountry(foundCountry.code.toLowerCase());
-      }
+    if (foundCountry) {
+      iti.setCountry(foundCountry.code.toLowerCase());
     }
   });
 }
@@ -275,11 +301,17 @@ function validateForm() {
   // Validation checks
   if (!validateField(name, (value) => value.trim() !== "")) isValid = false;
   if (!validateField(email, (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value))) isValid = false;
-  if (!validateField(phone, (value) => window.intlTelInput(phone).isValidNumber())) isValid = false;
+  if (!validateField(phone, (value) => globalIti.isValidNumber())) isValid = false;
   if (!validateField(message, (value) => value.trim() !== "")) isValid = false;
 
   if (isValid) {
     sendMail();
+  } else {
+    // Ensure phone number format is preserved on validation failure
+    const countryData = globalIti.getSelectedCountryData();
+    if (!phone.value.includes(countryData.dialCode)) {
+      phone.value = countryData.dialCode + phone.value;
+    }
   }
 }
 
@@ -302,6 +334,9 @@ function sendMail() {
       function(response) {
         alert("Message sent successfully!");
         document.getElementById("contact-form").reset();
+        // Reset phone input with country code after form reset
+        const countryData = globalIti.getSelectedCountryData();
+        document.getElementById("phone").value = countryData.dialCode;
       },
       function(error) {
         console.error("EmailJS Error:", error);
