@@ -8,20 +8,28 @@
       content="Professional portfolio website showcasing skills and projects"
     />
 
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Font Awesome -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
+
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="animations.css" />
 
+    <!-- EmailJS -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    <!-- International Phone Input -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/css/intlTelInput.css"
@@ -81,7 +89,7 @@
             <img
               src="images/waving-hand.svg"
               alt="Waving Hand"
-              class="waving-hand fade-in-up animation-step-1"
+              class="waving-hand"
             />
           </h1>
           <p>
@@ -119,7 +127,6 @@
             src="images/hero-headshot.webp"
             alt="Professional headshot of John Doe"
             id="profile-picture"
-            class="fade-in-up"
           />
         </div>
       </section>
@@ -183,22 +190,30 @@
           <form id="contact-form">
             <label
               >Name <br />
-              <input type="text" id="input-name" required
+              <input type="text" id="name" required
             /></label>
+
             <label
               >Email <br />
-              <input type="text" id="input-email" required
+              <input type="text" id="email" required
             /></label>
+
             <label
               >Phone Number <br />
-              <input type="number" id="input-number" required
+              <input type="tel" id="phone" required
             /></label>
+
             <label
               >Message (max 300 words) <br />
-              <textarea name="message" id="input-message"></textarea>
+              <textarea
+                name="message"
+                id="message"
+                rows="10"
+                oninput="checkWordLimit(this, 300)"
+              ></textarea>
             </label>
-            <span>0/300 words</span>
-            <button type="submit" id="btn">Send Message</button>
+            <span id="count-words">0/300 words</span>
+            <button type="submit">Send Message</button>
           </form>
         </div>
       </section>
