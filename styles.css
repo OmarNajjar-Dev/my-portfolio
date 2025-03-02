@@ -314,6 +314,54 @@ nav img {
   transform: scale(1.1);
 }
 
+/* Contact Container */
+.contact-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3em;
+  align-items: start;
+}
+
+.contact-container p {
+  grid-column: 1;
+}
+
+form {
+  grid-column: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-family: inherit;
+}
+
+textarea {
+  min-height: 180px;
+  resize: vertical;
+}
+
+button {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 10px 20px;
+  outline: var(--primary-color);
+  cursor: pointer;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+button:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   header nav span {
