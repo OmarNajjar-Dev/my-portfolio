@@ -11,7 +11,7 @@ const skillsData = [
     image: "images/html-logo.webp",
   },
   {
-    name: "CSS", 
+    name: "CSS",
     image: "images/css-logo.webp",
   },
   {
@@ -34,7 +34,7 @@ const projectsData = [
     title: "Small Portfolio",
     image: "images/small-portfolio.webp",
     description:
-      "A beginner-friendly portfolio project designed as a training exercise. It features a simple single-page layout with placeholder names and general information, focusing on basic web structure and styling.",
+      " A simple portfolio project for beginners, featuring a single-page layout with placeholder information, focusing on basic web structure and styling.",
     tags: ["HTML", "CSS", "JavaScript"],
     links: {
       github: "https://github.com/OmarNajjar-Dev/small-portfolio.git",
@@ -44,9 +44,9 @@ const projectsData = [
 
   {
     title: "To Do List",
-    image: "images/to-do-list.webp", 
+    image: "images/to-do-list.webp",
     description:
-      "A flexible and user-friendly task manager with local storage support. It allows users to add, edit, delete, and mark tasks as done. Features include a dark mode and smooth animations for a better user experience.",
+      "A user-friendly task manager with local storage, allowing task management with dark mode and smooth animations for a better experience.",
     tags: ["HTML", "SCSS", "JavaScript"],
     links: {
       github: "https://github.com/OmarNajjar-Dev/to-do-list.git",
@@ -69,7 +69,8 @@ const projectsData = [
   {
     title: "Ping Pong",
     image: "images/ping-pong.webp",
-    description: "Comming Soon...",
+    description:
+      "A simple and exciting Ping Pong game using OOP and Turtle, featuring smooth controls, responsive ball physics, and competitive score tracking.",
     tags: ["Python", "Turtle", "OOP"],
     links: {
       github: "",
