@@ -1,51 +1,27 @@
 // ==========================================
-// Constants and Configuration
-// ==========================================
-
 // EmailJS Configuration
-const EMAILJS_PUBLIC_KEY = "HYJ9rNlhhrXT4tlMY";
-const EMAILJS_SERVICE_ID = "service_tjk4vcw";
-const EMAILJS_TEMPLATE_ID = "template_76cpx2c";
-
-// Initialize EmailJS
-document.addEventListener("DOMContentLoaded", function () {
-  emailjs.init(EMAILJS_PUBLIC_KEY);
-});
-
-// ==========================================
-// Data Objects
 // ==========================================
 
-// Skills Data
-const skillsData = [
-  {
-    name: "HTML",
-    image: "images/html-logo.webp",
-  },
-  {
-    name: "CSS",
-    image: "images/css-logo.webp",
-  },
-  {
-    name: "JavaScript",
-    image: "images/javascript-logo.webp",
-  },
-  {
-    name: "Node.js",
-    image: "images/node-logo.webp",
-  },
-  {
-    name: "React.js",
-    image: "images/react-logo.webp",
-  },
-  {
-    name: "Python",
-    image: "images/python-logo.svg",
-  }
+const EMAIL_CONFIG = {
+  PUBLIC_KEY: "HYJ9rNlhhrXT4tlMY",
+  SERVICE_ID: "service_tjk4vcw",
+  TEMPLATE_ID: "template_76cpx2c",
+};
+
+// ==========================================
+// Skills & Projects Data
+// ==========================================
+
+const SKILLS = [
+  { name: "HTML", image: "images/html-logo.webp" },
+  { name: "CSS", image: "images/css-logo.webp" },
+  { name: "JavaScript", image: "images/javascript-logo.webp" },
+  { name: "Node.js", image: "images/node-logo.webp" },
+  { name: "React.js", image: "images/react-logo.webp" },
+  { name: "Python", image: "images/python-logo.svg" },
 ];
 
-// Projects Data
-const projectsData = [
+const PROJECTS = [
   {
     title: "Small Portfolio",
     image: "images/small-portfolio.webp",
@@ -92,120 +68,98 @@ const projectsData = [
   },
 ];
 
-// Countries Code Data
-const countryCodes = [
-  { name: "Afghanistan", code: "AF", dialCode: "+93" },
-  // ... (rest of country codes remain unchanged)
-  { name: "Zimbabwe", code: "ZW", dialCode: "+263" },
-];
-
 // ==========================================
-// Phone Input Initialization & Handling
+// Phone Input Setup
 // ==========================================
 
-let globalIti;
+let globalIti = null;
 
-function initializePhoneInput() {
-  const phoneInput = document.querySelector("#phone");
-  if (!phoneInput) return;
-
-  const iti = window.intlTelInput(phoneInput, {
-    initialCountry: "lb",
-    preferredCountries: ["lb", "us", "ca"],
-    utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/utils.js",
-    separateDialCode: true,
-    allowDropdown: true,
-    formatOnDisplay: true
-  });
-
-  globalIti = iti;
-
-  handlePhoneValidation(phoneInput, iti);
-  handlePhoneCountryUpdate(phoneInput, iti);
-
-  // Set initial value with country code
-  const countryData = iti.getSelectedCountryData();
-  if (!phoneInput.value && countryData) {
-    phoneInput.value = "+" + countryData.dialCode;
-  }
-}
-
-function handlePhoneValidation(phoneInput, iti) {
-  const contactForm = document.querySelector("#contact-form");
-  if (!contactForm) return;
-
-  contactForm.addEventListener("submit", function (e) {
-    e.preventDefault();
-    const number = phoneInput.value.trim();
-    const isValid = iti.isValidNumber() || /^\+\d{1,4}\d{6,}$/.test(number);
-    if (!isValid) {
-      alert("Please enter a valid phone number.");
-    }
-  });
-}
-
-function handlePhoneCountryUpdate(phoneInput, iti) {
-  // Handle country selection change
-  phoneInput.addEventListener("countrychange", function() {
-    const countryData = iti.getSelectedCountryData();
-    const currentValue = phoneInput.value.trim();
-    // Only set dial code if field is empty
-    if (!currentValue) {
-      phoneInput.value = "+" + countryData.dialCode;
-    }
-  });
-
-  // Handle manual input
-  phoneInput.addEventListener("input", function() {
-    let number = phoneInput.value.trim();
-    
-    // Remove any existing plus sign
-    if (number.startsWith("+")) {
-      number = number.substring(1);
-    }
-    
-    // Try to find country by dial code
-    const foundCountry = countryCodes.find(country => 
-      number.startsWith(country.dialCode.substring(1))
-    );
-
-    if (foundCountry) {
-      iti.setCountry(foundCountry.code.toLowerCase());
-    }
-  });
-}
+const PHONE_CONFIG = {
+  initialCountry: "lb",
+  preferredCountries: ["lb", "us", "ca"],
+  utilsScript:
+    "https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/utils.js",
+  strictMode: true,
+  separateDialCode: true,
+  allowDropdown: true,
+};
 
 // ==========================================
-// Animation Functions
+// DOM Event Listeners
 // ==========================================
 
-function initializeAnimations() {
-  const animatedElements = document.querySelectorAll(".fade-in-up, .fade-in-left");
-  
-  const observer = new IntersectionObserver(
-    (entries, observer) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.1 }
-  );
+const EVENT_LISTENERS = {
+  onDOMLoad: () => {
+    emailjs.init(EMAIL_CONFIG.PUBLIC_KEY);
+    initializePhoneInput();
+    handlePhoneValidation(globalIti);
+    initializeAnimations();
+    displaySkills();
+    displayProjects();
+    initializeForm();
+  },
 
-  animatedElements.forEach((element) => observer.observe(element));
-}
+  onFormSubmit: (form) => {
+    form.addEventListener("submit", validateForm);
+  },
+
+  onPhoneValidation: (contactForm, iti) => {
+    if (!contactForm) return;
+
+    contactForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      if (!iti.isValidNumber()) {
+        alert("Please enter a valid phone number.");
+      }
+    });
+  },
+
+  onWordCount: (textarea, limit) => {
+    textarea.addEventListener("input", () => {
+      FORM.checkWordLimit(textarea, limit);
+    });
+  },
+};
 
 // ==========================================
-// Skills Display Functions
+// Animation Handlers
 // ==========================================
 
-function displaySkills() {
-  const skillsList = document.getElementById("skills-list");
-  if (!skillsList) return;
+const ANIMATION = {
+  init: () => {
+    const elements = document.querySelectorAll(".fade-in-up, .fade-in-left");
+    const observer = new IntersectionObserver(ANIMATION.handleIntersection, {
+      threshold: 0.1,
+    });
+    elements.forEach((element) => observer.observe(element));
+  },
 
-  skillsData.forEach((skill) => {
+  handleIntersection: (entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  },
+};
+
+// ==========================================
+// Skills Display
+// ==========================================
+
+const SKILLS_DISPLAY = {
+  render: () => {
+    const skillsList = document.getElementById("skills-list");
+    if (!skillsList) return;
+
+    SKILLS.forEach((skill) => {
+      const li = SKILLS_DISPLAY.createSkillElement(skill);
+      skillsList.appendChild(li);
+    });
+  },
+
+  createSkillElement: (skill) => {
     const li = document.createElement("li");
     const img = document.createElement("img");
     const span = document.createElement("span");
@@ -214,152 +168,213 @@ function displaySkills() {
     img.alt = skill.name;
     span.textContent = skill.name;
 
-    li.appendChild(img);
-    li.appendChild(span);
-    skillsList.appendChild(li);
-  });
-}
+    li.append(img, span);
+    return li;
+  },
+};
 
 // ==========================================
-// Projects Display Functions
+// Projects Display
 // ==========================================
+
+const PROJECTS_DISPLAY = {
+  render: () => {
+    const projectsList = document.getElementById("projects-list");
+    if (!projectsList) return;
+
+    PROJECTS.forEach((project) => {
+      const card = PROJECTS_DISPLAY.createProjectCard(project);
+      projectsList.appendChild(card);
+    });
+  },
+
+  createProjectCard: (project) => {
+    const card = document.createElement("li");
+    card.className = "project-card";
+
+    const image = PROJECTS_DISPLAY.createImage(project);
+    const content = PROJECTS_DISPLAY.createContent(project);
+
+    card.append(image, content);
+    return card;
+  },
+
+  createImage: (project) => {
+    const img = document.createElement("img");
+    img.src = project.image;
+    img.alt = project.title;
+    return img;
+  },
+
+  createContent: (project) => {
+    const content = document.createElement("div");
+    content.className = "project-card-content";
+
+    const title = document.createElement("h3");
+    title.textContent = project.title;
+
+    const description = document.createElement("p");
+    description.textContent = project.description;
+    description.className = "description";
+
+    const tags = PROJECTS_DISPLAY.createTags(project.tags);
+    const links = PROJECTS_DISPLAY.createLinks(project.links);
+
+    content.append(title, description, tags, links);
+    return content;
+  },
+
+  createTags: (tags) => {
+    const ul = document.createElement("ul");
+    ul.className = "tags";
+    ul.innerHTML = tags.map((tag) => `<li>${tag}</li>`).join("");
+    return ul;
+  },
+
+  createLinks: (links) => {
+    const ul = document.createElement("ul");
+    ul.className = "links";
+    ul.innerHTML = `
+      <li>
+        <a href="${links.github}" target="_blank" rel="noopener noreferrer">
+          <img src="images/github.svg" alt="GitHub" class="icon" /> Code
+        </a>
+      </li>
+      <li>
+        <a href="${links.demo}" target="_blank" rel="noopener noreferrer">
+          <img src="images/external-link.svg" alt="Live Demo" class="icon" /> Live Demo
+        </a>
+      </li>
+    `;
+    return ul;
+  },
+};
+
+// ==========================================
+// Form Handling
+// ==========================================
+
+const FORM = {
+  validate: () => {
+    const fields = {
+      name: document.getElementById("name"),
+      email: document.getElementById("email"),
+      phone: document.getElementById("phone"),
+      message: document.getElementById("message"),
+    };
+
+    const validations = {
+      name: (value) => value.trim() !== "",
+      email: (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value),
+      phone: () => globalIti.isValidNumber(),
+      message: (value) => value.trim() !== "",
+    };
+
+    let isValid = true;
+
+    Object.entries(fields).forEach(([field, element]) => {
+      if (!FORM.validateField(element, validations[field])) {
+        isValid = false;
+      }
+    });
+
+    if (isValid) {
+      FORM.send();
+    } else {
+      FORM.handleInvalidPhone(fields.phone);
+    }
+  },
+
+  validateField: (element, validationFn) => {
+    const isValid = validationFn(element.value);
+    element.style.borderColor = isValid ? "var(--primary-color)" : "red";
+    return isValid;
+  },
+
+  handleInvalidPhone: (phoneElement) => {
+    const countryData = globalIti.getSelectedCountryData();
+    if (!phoneElement.value.includes("+" + countryData.dialCode)) {
+      phoneElement.value = "+" + countryData.dialCode + phoneElement.value;
+    }
+  },
+
+  send: () => {
+    const formData = {
+      from_name: document.getElementById("name").value,
+      email: document.getElementById("email").value,
+      phone: document.getElementById("phone").value,
+      message: document.getElementById("message").value,
+    };
+
+    emailjs
+      .send(EMAIL_CONFIG.SERVICE_ID, EMAIL_CONFIG.TEMPLATE_ID, formData)
+      .then(
+        () => {
+          alert("Message sent successfully!");
+          document.getElementById("contact-form").reset();
+          document.getElementById("phone").value = "";
+        },
+        (error) => {
+          console.error("EmailJS Error:", error);
+          alert("Failed to send message. Please try again.");
+        }
+      );
+  },
+
+  checkWordLimit: (textarea, limit) => {
+    let words = textarea.value.trim().match(/\S+/g) || [];
+
+    if (words.length > limit) {
+      textarea.value = words.slice(0, limit).join(" ");
+      words = words.slice(0, limit);
+    }
+
+    document.getElementById(
+      "count-words"
+    ).textContent = `${words.length}/${limit} words`;
+  },
+};
+
+// ==========================================
+// Initialize Application
+// ==========================================
+
+function initializePhoneInput() {
+  const phoneInput = document.querySelector("#phone");
+  if (!phoneInput) return;
+  globalIti = window.intlTelInput(phoneInput, PHONE_CONFIG);
+}
+
+function handlePhoneValidation(iti) {
+  const contactForm = document.querySelector("#contact-form");
+  EVENT_LISTENERS.onPhoneValidation(contactForm, iti);
+}
+
+function initializeAnimations() {
+  ANIMATION.init();
+}
+
+function displaySkills() {
+  SKILLS_DISPLAY.render();
+}
 
 function displayProjects() {
-  const projectsList = document.getElementById("projects-list");
-  if (!projectsList) return;
-
-  projectsData.forEach((project) => {
-    const projectCard = createProjectCard(project);
-    projectsList.appendChild(projectCard);
-  });
+  PROJECTS_DISPLAY.render();
 }
-
-function createProjectCard(project) {
-  const projectCard = document.createElement("li");
-  projectCard.className = "project-card";
-
-  const projectImage = document.createElement("img");
-  projectImage.src = project.image;
-  projectImage.alt = project.title;
-
-  const projectContent = document.createElement("div");
-  projectContent.className = "project-card-content";
-
-  const projectTitle = document.createElement("h3");
-  projectTitle.textContent = project.title;
-
-  const projectDescription = document.createElement("p");
-  projectDescription.textContent = project.description;
-  projectDescription.className = "description";
-
-  const tagsList = document.createElement("ul");
-  tagsList.className = "tags";
-  tagsList.innerHTML = project.tags.map((tag) => `<li>${tag}</li>`).join("");
-
-  const linksList = document.createElement("ul");
-  linksList.className = "links";
-  linksList.innerHTML = `
-    <li>
-      <a href="${project.links.github}" target="_blank" rel="noopener noreferrer">
-        <img src="images/github.svg" alt="GitHub" class="icon" /> Code
-      </a>
-    </li>
-    <li>
-      <a href="${project.links.demo}" target="_blank" rel="noopener noreferrer">
-        <img src="images/external-link.svg" alt="Live Demo" class="icon" /> Live Demo
-      </a>
-    </li>
-  `;
-
-  projectContent.append(projectTitle, projectDescription, tagsList, linksList);
-  projectCard.append(projectImage, projectContent);
-
-  return projectCard;
-}
-
-// ==========================================
-// Form Handling Functions
-// ==========================================
 
 function initializeForm() {
   const form = document.getElementById("contact-form");
   if (!form) return;
+  EVENT_LISTENERS.onFormSubmit(form);
 
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    validateForm();
-  });
-}
-
-function checkWordLimit(textarea, limit) {
-  const words = textarea.value.trim().split(/\s+/);
-  if (words.length > limit) {
-    textarea.value = words.slice(0, limit).join(" ");
+  const messageTextarea = document.getElementById("message");
+  if (messageTextarea) {
+    EVENT_LISTENERS.onWordCount(messageTextarea, 300);
   }
-  document.getElementById("count-words").textContent = `${words.length}/300 words`;
 }
 
 function validateForm() {
-  const name = document.getElementById("name");
-  const email = document.getElementById("email");
-  const phone = document.getElementById("phone");
-  const message = document.getElementById("message");
-  let isValid = true;
-
-  // Validation checks
-  if (!validateField(name, (value) => value.trim() !== "")) isValid = false;
-  if (!validateField(email, (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value))) isValid = false;
-  if (!validateField(phone, (value) => globalIti.isValidNumber() || /^\+\d{1,4}\d{6,}$/.test(value))) isValid = false;
-  if (!validateField(message, (value) => value.trim() !== "")) isValid = false;
-
-  if (isValid) {
-    sendMail();
-  } else {
-    // Ensure phone number format is preserved on validation failure
-    const countryData = globalIti.getSelectedCountryData();
-    if (!phone.value.includes("+" + countryData.dialCode)) {
-      phone.value = "+" + countryData.dialCode + phone.value;
-    }
-  }
+  FORM.validate();
 }
 
-function validateField(element, validationFn) {
-  const isValid = validationFn(element.value);
-  element.style.borderColor = isValid ? "var(--primary-color)" : "red";
-  return isValid;
-}
-
-function sendMail() {
-  const formData = {
-    from_name: document.getElementById("name").value,
-    email: document.getElementById("email").value,
-    phone: document.getElementById("phone").value,
-    message: document.getElementById("message").value
-  };
-
-  emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, formData)
-    .then(
-      function(response) {
-        alert("Message sent successfully!");
-        document.getElementById("contact-form").reset();
-        // Leave phone input empty after form reset
-        document.getElementById("phone").value = "";
-      },
-      function(error) {
-        console.error("EmailJS Error:", error);
-        alert("Failed to send message. Please try again.");
-      }
-    );
-}
-
-// ==========================================
-// Initialize Everything
-// ==========================================
-
-document.addEventListener("DOMContentLoaded", function() {
-  initializePhoneInput();
-  initializeAnimations();
-  displaySkills();
-  displayProjects();
-  initializeForm();
-});
+document.addEventListener("DOMContentLoaded", EVENT_LISTENERS.onDOMLoad);
