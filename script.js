@@ -38,6 +38,10 @@ const skillsData = [
     name: "React.js",
     image: "images/react-logo.webp",
   },
+  {
+    name: "Python",
+    image: "images/python-logo.svg",
+  }
 ];
 
 // Projects Data
@@ -109,7 +113,9 @@ function initializePhoneInput() {
     initialCountry: "lb",
     preferredCountries: ["lb", "us", "ca"],
     utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/utils.js",
-    separateDialCode: true
+    separateDialCode: true,
+    allowDropdown: true,
+    formatOnDisplay: true
   });
 
   globalIti = iti;
@@ -120,7 +126,7 @@ function initializePhoneInput() {
   // Set initial value with country code
   const countryData = iti.getSelectedCountryData();
   if (!phoneInput.value && countryData) {
-    phoneInput.value = countryData.dialCode;
+    phoneInput.value = "+" + countryData.dialCode;
   }
 }
 
@@ -130,7 +136,9 @@ function handlePhoneValidation(phoneInput, iti) {
 
   contactForm.addEventListener("submit", function (e) {
     e.preventDefault();
-    if (!iti.isValidNumber()) {
+    const number = phoneInput.value.trim();
+    const isValid = iti.isValidNumber() || /^\+\d{1,4}\d{6,}$/.test(number);
+    if (!isValid) {
       alert("Please enter a valid phone number.");
     }
   });
@@ -143,7 +151,7 @@ function handlePhoneCountryUpdate(phoneInput, iti) {
     const currentValue = phoneInput.value.trim();
     // Only set dial code if field is empty
     if (!currentValue) {
-      phoneInput.value = countryData.dialCode;
+      phoneInput.value = "+" + countryData.dialCode;
     }
   });
 
@@ -301,7 +309,7 @@ function validateForm() {
   // Validation checks
   if (!validateField(name, (value) => value.trim() !== "")) isValid = false;
   if (!validateField(email, (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value))) isValid = false;
-  if (!validateField(phone, (value) => globalIti.isValidNumber())) isValid = false;
+  if (!validateField(phone, (value) => globalIti.isValidNumber() || /^\+\d{1,4}\d{6,}$/.test(value))) isValid = false;
   if (!validateField(message, (value) => value.trim() !== "")) isValid = false;
 
   if (isValid) {
@@ -309,8 +317,8 @@ function validateForm() {
   } else {
     // Ensure phone number format is preserved on validation failure
     const countryData = globalIti.getSelectedCountryData();
-    if (!phone.value.includes(countryData.dialCode)) {
-      phone.value = countryData.dialCode + phone.value;
+    if (!phone.value.includes("+" + countryData.dialCode)) {
+      phone.value = "+" + countryData.dialCode + phone.value;
     }
   }
 }
@@ -334,9 +342,8 @@ function sendMail() {
       function(response) {
         alert("Message sent successfully!");
         document.getElementById("contact-form").reset();
-        // Reset phone input with country code after form reset
-        const countryData = globalIti.getSelectedCountryData();
-        document.getElementById("phone").value = countryData.dialCode;
+        // Leave phone input empty after form reset
+        document.getElementById("phone").value = "";
       },
       function(error) {
         console.error("EmailJS Error:", error);
