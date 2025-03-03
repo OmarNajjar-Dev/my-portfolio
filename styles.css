@@ -37,7 +37,10 @@ body {
 /* ===========================================
    Typography
    ========================================= */
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   font-weight: 900;
 }
 
@@ -50,7 +53,7 @@ h2 {
    Layout & Structure
    ========================================= */
 section {
-  padding: 5rem 5%;
+  padding: 3rem 5%;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -64,7 +67,7 @@ header {
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 1rem 5% 0;
+  padding: 1rem 5% 1rem;
 }
 
 header .email-link {
@@ -111,6 +114,7 @@ nav img {
   display: flex;
   align-items: center;
   gap: 1.25rem;
+  padding-bottom: 2em;
 }
 
 #hero #profile-picture {
@@ -161,7 +165,8 @@ nav img {
 }
 
 #hero nav a img {
-  filter: invert(47%) sepia(82%) saturate(2384%) hue-rotate(208deg) brightness(97%) contrast(91%);
+  filter: invert(47%) sepia(82%) saturate(2384%) hue-rotate(208deg)
+    brightness(97%) contrast(91%);
   transition: var(--transition);
 }
 
@@ -171,7 +176,8 @@ nav img {
 }
 
 #hero nav a:hover img {
-  filter: invert(6%) sepia(4%) saturate(1300%) hue-rotate(180deg) brightness(95%) contrast(100%);
+  filter: invert(6%) sepia(4%) saturate(1300%) hue-rotate(180deg)
+    brightness(95%) contrast(100%);
 }
 
 /* ===========================================
@@ -187,6 +193,7 @@ nav img {
   list-style-type: none;
   display: flex;
   justify-content: center;
+  align-items: center;
   margin-top: 1.5em;
   gap: 1em;
   flex-wrap: wrap;
@@ -246,6 +253,7 @@ nav img {
   overflow: hidden;
   min-height: 400px;
   transition: var(--transition);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
 }
 
 #projects li.project-card:hover {
@@ -300,7 +308,8 @@ nav img {
 #projects ul.links .icon {
   width: 18px;
   height: 18px;
-  filter: invert(47%) sepia(82%) saturate(2384%) hue-rotate(208deg) brightness(97%) contrast(91%);
+  filter: invert(47%) sepia(82%) saturate(2384%) hue-rotate(208deg)
+    brightness(97%) contrast(91%);
 }
 
 #projects ul.links a {
@@ -375,6 +384,7 @@ textarea {
   background-color: var(--background-color);
   transition: var(--transition);
   position: relative;
+  font-size: 16px;
 }
 
 .iti {
@@ -415,7 +425,7 @@ textarea:focus {
 /* ===========================================
    Responsive Design
    ========================================= */
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   /* Header Adjustments */
   header nav span {
     display: none;
@@ -447,7 +457,6 @@ textarea:focus {
   /* Skills Section Adjustments */
   #skills-list {
     flex-direction: column;
-    align-items: center;
   }
 
   /* Testimony Section Adjustments */

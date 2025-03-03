@@ -8,7 +8,8 @@
       content="Professional portfolio website showcasing skills and projects"
     />
 
-    <!-- Fonts -->
+    <!-- Typography & Fonts
+         Using Poppins for clean, modern look -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -16,20 +17,21 @@
       rel="stylesheet"
     />
 
-    <!-- Font Awesome -->
+    <!-- Icons & Visual Elements
+         Font Awesome for enhanced UI -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
 
-    <!-- Custom CSS -->
+    <!-- Core Styling
+         Custom styles & animations -->
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="animations.css" />
 
-    <!-- EmailJS -->
+    <!-- Functionality & Features
+         Contact form & phone input -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-
-    <!-- International Phone Input -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/css/intlTelInput.css"
@@ -40,7 +42,8 @@
   </head>
 
   <body>
-    <!-- Header Section - Contains navigation and profile info -->
+    <!-- Navigation & Personal Brand
+         Professional links & contact info -->
     <header class="fade-in-left">
       <h3>Omar Najjar</h3>
       <nav>
@@ -79,9 +82,10 @@
       </nav>
     </header>
 
-    <!-- Main Content Area -->
+    <!-- Primary Content Container -->
     <main>
-      <!-- Hero Section - Introduction and main call-to-action -->
+      <!-- Hero Section
+           Personal introduction & quick navigation -->
       <section id="hero" class="fade-in-up">
         <div>
           <h1>
@@ -93,7 +97,15 @@
             />
           </h1>
           <p>
-            I am a Computer Science student with a strong passion for web development. My expertise lies in HTML, CSS, and JavaScript, with basic to intermediate knowledge of Python. I have earned two certifications from NavyBits, including a skills certification upon successfully building this portfolio. My previous projects, showcased in the Projects section, reflect my proficiency in web development. I am highly motivated to continuously expand my technical skills and aspire to become a software engineer at a leading tech company.
+            I am a Computer Science student with a strong passion for web
+            development. My expertise lies in HTML, CSS, and JavaScript, with
+            basic to intermediate knowledge of Python. I have earned two
+            certifications from NavyBits, including a skills certification upon
+            successfully building this portfolio. My previous projects,
+            showcased in the Projects section, reflect my proficiency in web
+            development. I am highly motivated to continuously expand my
+            technical skills and aspire to become a software engineer at a
+            leading tech company.
           </p>
           <nav>
             <ul>
@@ -127,15 +139,20 @@
         </div>
       </section>
 
-      <!-- Skills Section -->
+      <!-- Technical Expertise
+           Showcasing development capabilities -->
       <section id="skills" class="fade-in-up">
         <h2>Skills</h2>
         <p>
-          I have strong skills in HTML, CSS, and JavaScript, with basic to intermediate knowledge of Python. I am continuously learning and improving my technical abilities to advance in web development.
+          I have strong skills in HTML, CSS, and JavaScript, with basic to
+          intermediate knowledge of Python. I am continuously learning and
+          improving my technical abilities to advance in web development.
         </p>
         <ul id="skills-list"></ul>
       </section>
 
+      <!-- Portfolio Showcase
+           Highlighting key achievements -->
       <section id="projects" class="fade-in-up">
         <h2>Projects</h2>
         <p>
@@ -145,6 +162,8 @@
         <ul id="projects-list"></ul>
       </section>
 
+      <!-- Professional Endorsements
+           Client & colleague feedback -->
       <section id="testimony" class="fade-in-up">
         <h2>Testimony</h2>
         <div class="testimony-container">
@@ -153,7 +172,6 @@
               src="images/testimony-headshot.webp"
               alt="testimony-headshot"
             />
-
             <h4>John Doe</h4>
             <p>Lorem ipsum dolor sit.</p>
           </span>
@@ -170,21 +188,26 @@
         </div>
       </section>
 
+      <!-- Interactive Contact Form
+           Professional communication channel -->
       <section id="contact" class="fade-in-up">
         <h2>Contact</h2>
         <div class="contact-container">
           <p>
-            Feel free to reach out to me for any inquiries, collaborations, or opportunities. Whether you have a project in mind, need assistance, or just want to connect, I'd be happy to hear from you. Fill out the form below, and I'll get back to you as soon as possible.
+            Feel free to reach out to me for any inquiries, collaborations, or
+            opportunities. Whether you have a project in mind, need assistance,
+            or just want to connect, I'd be happy to hear from you. Fill out the
+            form below, and I'll get back to you as soon as possible.
           </p>
           <form id="contact-form">
             <label
               >Name <br />
-              <input type="text" id="name" required
+              <input type="text" id="name" autocomplete="name" required
             /></label>
 
             <label
               >Email <br />
-              <input type="text" id="email" required
+              <input type="text" id="email" autocomplete="email" required
             /></label>
 
             <label
@@ -194,11 +217,7 @@
 
             <label
               >Message (max 300 words) <br />
-              <textarea
-                name="message"
-                id="message"
-                rows="10"
-              ></textarea>
+              <textarea name="message" id="message" rows="10"></textarea>
             </label>
             <span id="count-words">0/300 words</span>
             <button type="submit">Send Message</button>
@@ -207,6 +226,7 @@
       </section>
     </main>
 
+    <!-- Core Functionality -->
     <script src="script.js"></script>
   </body>
 </html>
