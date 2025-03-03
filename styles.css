@@ -1,15 +1,22 @@
-/* Variables */
+/* ===========================================
+   CSS Variables - Core Theme Configuration
+   ========================================= */
 :root {
+  /* Colors */
   --primary-color: #4a76ee;
   --text-color: #1a1c20;
   --background-color: #eeeff1;
   --white: #ffffff;
   --gray: #666666;
-  --transition: all 0.3s ease;
   --tag-background-color: #d3d3d3;
+
+  /* Animations */
+  --transition: all 0.3s ease;
 }
 
-/* Reset and Base Styles */
+/* ===========================================
+   Reset & Base Styles
+   ========================================= */
 * {
   margin: 0;
   padding: 0;
@@ -27,11 +34,11 @@ body {
   background-color: var(--background-color);
 }
 
-/* Layout */
-section {
-  padding: 5rem 5%;
-  max-width: 1200px;
-  margin: 0 auto;
+/* ===========================================
+   Typography
+   ========================================= */
+h1, h2, h3, h4 {
+  font-weight: 900;
 }
 
 h2 {
@@ -39,14 +46,18 @@ h2 {
   text-align: center;
 }
 
-h1,
-h2,
-h3,
-h4 {
-  font-weight: 900;
+/* ===========================================
+   Layout & Structure
+   ========================================= */
+section {
+  padding: 5rem 5%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* Header */
+/* ===========================================
+   Header & Navigation
+   ========================================= */
 header {
   display: flex;
   justify-content: space-between;
@@ -70,7 +81,7 @@ header .email-link img {
   transition: var(--transition);
 }
 
-/* Navigation */
+/* Navigation Menu */
 nav ul {
   list-style: none;
   display: flex;
@@ -93,7 +104,9 @@ nav img {
   transition: var(--transition);
 }
 
-/* Hero Section */
+/* ===========================================
+   Hero Section
+   ========================================= */
 #hero {
   display: flex;
   align-items: center;
@@ -127,6 +140,7 @@ nav img {
   transition: var(--transition);
 }
 
+/* Hero Navigation */
 #hero nav {
   margin-top: 1.25rem;
 }
@@ -146,8 +160,7 @@ nav img {
 }
 
 #hero nav a img {
-  filter: invert(47%) sepia(82%) saturate(2384%) hue-rotate(208deg)
-    brightness(97%) contrast(91%);
+  filter: invert(47%) sepia(82%) saturate(2384%) hue-rotate(208deg) brightness(97%) contrast(91%);
   transition: var(--transition);
 }
 
@@ -157,11 +170,12 @@ nav img {
 }
 
 #hero nav a:hover img {
-  filter: invert(6%) sepia(4%) saturate(1300%) hue-rotate(180deg)
-    brightness(95%) contrast(100%);
+  filter: invert(6%) sepia(4%) saturate(1300%) hue-rotate(180deg) brightness(95%) contrast(100%);
 }
 
-/* Skills Section */
+/* ===========================================
+   Skills Section
+   ========================================= */
 #skills p,
 #skills span {
   font-size: 14px;
@@ -197,7 +211,9 @@ nav img {
   height: 25px;
 }
 
-/* Project Section */
+/* ===========================================
+   Projects Section
+   ========================================= */
 #projects {
   display: flex;
   flex-direction: column;
@@ -209,6 +225,7 @@ nav img {
   margin-bottom: 2em;
 }
 
+/* Project Cards */
 #projects ul {
   list-style-type: none;
   display: flex;
@@ -244,6 +261,7 @@ nav img {
   transform: scale(1.05);
 }
 
+/* Project Card Content */
 #projects .project-card-content {
   display: flex;
   flex-direction: column;
@@ -259,6 +277,7 @@ nav img {
   line-height: 1.4;
 }
 
+/* Project Tags & Links */
 #projects ul.tags {
   flex-direction: row;
   gap: 0.75em;
@@ -279,8 +298,7 @@ nav img {
 #projects ul.links .icon {
   width: 18px;
   height: 18px;
-  filter: invert(47%) sepia(82%) saturate(2384%) hue-rotate(208deg)
-    brightness(97%) contrast(91%);
+  filter: invert(47%) sepia(82%) saturate(2384%) hue-rotate(208deg) brightness(97%) contrast(91%);
 }
 
 #projects ul.links a {
@@ -292,7 +310,9 @@ nav img {
   color: var(--primary-color);
 }
 
-/* Testimony Section */
+/* ===========================================
+   Testimony Section
+   ========================================= */
 #testimony img {
   width: 200px;
   height: 200px;
@@ -322,7 +342,9 @@ nav img {
   transform: scale(1.1);
 }
 
-/* Contact Container */
+/* ===========================================
+   Contact Section
+   ========================================= */
 .contact-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -334,6 +356,7 @@ nav img {
   margin-top: 1.25em;
 }
 
+/* Contact Form */
 #contact-form {
   grid-column: 2;
   display: flex;
@@ -387,8 +410,11 @@ textarea:focus {
   color: var(--gray);
 }
 
-/* Responsive Design */
+/* ===========================================
+   Responsive Design
+   ========================================= */
 @media (max-width: 768px) {
+  /* Header Adjustments */
   header nav span {
     display: none;
   }
@@ -402,6 +428,7 @@ textarea:focus {
     filter: initial;
   }
 
+  /* Hero Section Adjustments */
   #hero {
     flex-direction: column-reverse;
   }
@@ -415,11 +442,13 @@ textarea:focus {
     height: 250px;
   }
 
+  /* Skills Section Adjustments */
   #skills-list {
     flex-direction: column;
     align-items: center;
   }
 
+  /* Testimony Section Adjustments */
   .testimony-container {
     flex-direction: column;
     gap: 3em;
@@ -430,6 +459,7 @@ textarea:focus {
     margin: 0;
   }
 
+  /* Contact Section Adjustments */
   .contact-container {
     grid-template-columns: 1fr;
   }
