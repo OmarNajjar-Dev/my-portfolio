@@ -127,6 +127,7 @@ nav img {
 #hero h1 {
   font-size: 2.25rem;
   display: flex;
+  align-items: center;
   gap: 7px;
 }
 
