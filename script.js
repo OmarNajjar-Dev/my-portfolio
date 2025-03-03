@@ -77,6 +77,7 @@ let globalIti = null;
 const PHONE_CONFIG = {
   initialCountry: "lb",
   preferredCountries: ["lb", "us", "ca"],
+  excludeCountries: ["il"],
   utilsScript:
     "https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/utils.js",
   strictMode: true,
