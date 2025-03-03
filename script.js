@@ -76,7 +76,7 @@ const projectsData = [
     tags: ["Python", "Turtle", "OOP"],
     links: {
       github: "https://github.com/OmarNajjar-Dev/snake-game.git",
-      demo: "https://github.com/OmarNajjar-Dev/snake-game.git",
+      demo: "https://www.mediafire.com/file/5u4fsgqcp79njpj/Snake+Game.exe/file",
     },
   },
   {
