@@ -189,6 +189,7 @@ nav img {
   justify-content: center;
   margin-top: 1.5em;
   gap: 1em;
+  flex-wrap: wrap;
 }
 
 #skills-list li {
