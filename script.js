@@ -325,7 +325,7 @@ const FORM = {
           button.textContent = "Send Message";
           document.getElementById("count-words").innerHTML = "0/300 words";
         },
-        
+
         (error) => {
           console.error("EmailJS Error:", error);
           alert("Failed to send message. Please try again.");
