@@ -311,8 +311,6 @@ const FORM = {
       message: document.getElementById("message").value,
     };
 
-    const button = document.querySelector("button[type='submit']");
-
     emailjs
       .send(EMAIL_CONFIG.SERVICE_ID, EMAIL_CONFIG.TEMPLATE_ID, formData)
       .then(
@@ -320,16 +318,16 @@ const FORM = {
           alert("Message sent successfully!");
           document.getElementById("contact-form").reset();
           document.getElementById("phone").value = "";
-          button.disabled = false;
-          button.style = "";
-          button.textContent = "Send Message";
+          this.disabled = false;
+          this.style = "";
+          this.textContent = "Send Message";
         },
         (error) => {
           console.error("EmailJS Error:", error);
           alert("Failed to send message. Please try again.");
-          button.disabled = false;
-          button.style = "";
-          button.textContent = "Send Message";
+          this.disabled = false;
+          this.style = "";
+          this.textContent = "Send Message";
         }
       );
   },
