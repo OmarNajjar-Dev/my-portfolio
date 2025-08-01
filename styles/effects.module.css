@@ -1,0 +1,21 @@
+/* Link with underline hover effect */
+.navLink {
+    position: relative;
+    color: var(--color-primary);
+    transition: color 0.3s ease;
+}
+
+.navLink::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-primary);
+    transition: width 0.3s ease-in-out;
+}
+
+.navLink:hover::after {
+    width: 100%;
+}
