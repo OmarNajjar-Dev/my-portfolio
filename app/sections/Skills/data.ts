@@ -16,4 +16,4 @@ export const skills: Skills[] = [
   { name: "Git", src: "/icons/git-logo.svg" },
   { name: "GitHub", src: "/icons/github-logo.svg" },
   { name: "VS Code", src: "/icons/vscode-logo.svg" },
-];
+] as const;

@@ -7,7 +7,7 @@ interface HeroLinkProps {
   text: string;
 }
 
-export default function HeroLink({ icon, href, text }: HeroLinkProps) {
+export default function IconLink({ icon, href, text }: HeroLinkProps) {
   return (
     <Link
       href={href}

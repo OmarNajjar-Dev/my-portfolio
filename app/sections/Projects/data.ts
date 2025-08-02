@@ -63,4 +63,4 @@ export const projects: Project[] = [
     liveUrl: "https://shop-kkre3g8yf-omarnajjar-devs-projects.vercel.app/",
     featured: true,
   },
-];
+] as const;
