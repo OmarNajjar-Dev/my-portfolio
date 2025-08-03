@@ -3,7 +3,7 @@ type InputWithLabel = {
   name: string;
   label: string;
   id: string;
-  type?: "text" | "email" | "number" | "textarea";
+  type?: "text" | "email" | "number" | "textarea" | "tel";
   placeholder?: string;
   required?: boolean;
   autoComplete?: string;
@@ -20,7 +20,7 @@ type InputWithoutLabel = {
   name: string;
   label?: undefined;
   id?: string;
-  type?: "text" | "email" | "number" | "textarea";
+  type?: "text" | "email" | "number" | "textarea" | "tel";
   placeholder?: string;
   required?: boolean;
   autoComplete?: string;
