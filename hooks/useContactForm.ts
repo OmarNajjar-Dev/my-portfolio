@@ -8,7 +8,7 @@ import {
   countWords,
   sendEmail,
 } from "@/lib/emailjs";
-import { contactData } from "@/app/sections/Contact/data";
+import { contactData } from "@/components/sections/Contact/data";
 
 export const useContactForm = () => {
   const [formData, setFormData] = useState<ContactFormData>({

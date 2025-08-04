@@ -3,8 +3,8 @@
 import { Mail, Loader2 } from "lucide-react";
 import FormInput from "@/components/ui/FormInput";
 import Toast from "@/components/ui/Toast";
-import { contactData } from "@/app/sections/Contact/data";
-import { useContactForm } from "@/components/ui/hooks/useContactForm";
+import { contactData } from "@/components/sections/Contact/data";
+import { useContactForm } from "@/hooks/useContactForm";
 
 export default function ContactForm() {
   const {
@@ -98,7 +98,7 @@ export default function ContactForm() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className={`w-full py-3 md:py-4 px-4 md:px-6 rounded-xl md:rounded-2xl font-bold text-white transition-all duration-300 shadow-lg cursor-pointer ${
+              className={`w-full py-3 px-4 md:px-6 rounded-xl md:rounded-2xl font-bold text-white transition-all duration-300 shadow-lg cursor-pointer ${
                 isSubmitting
                   ? "bg-gray-400 pointer-events-none shadow-gray-400/30"
                   : "bg-gradient-to-r from-accent to-accent/90 hover:from-accent/90 hover:to-accent focus:ring-4 focus:ring-accent/30 focus:outline-none transform hover:scale-[1.02] active:scale-[0.98] shadow-accent/30 hover:shadow-xl hover:shadow-accent/20"

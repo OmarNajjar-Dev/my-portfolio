@@ -4,6 +4,7 @@ import { Code2 as Code, PenLine, Mail } from "lucide-react";
 import IconLink from "@/components/ui/IconLink";
 import AnimateOnScroll from "@/components/ui/AnimateOnScroll";
 import { heroData } from "./data";
+import Link from "next/link";
 
 // Icon mapping for dynamic icon rendering
 const iconMap = {
