@@ -20,7 +20,7 @@ function ContactSection() {
     <section
       id="contact"
       aria-labelledby="contact-heading"
-      className="contact-section relative py-16 md:py-20 lg:py-24 bg-gradient-to-br from-gray-50 via-white to-gray-50 overflow-hidden"
+      className="contact-section relative py-16 md:py-20 lg:py-24 overflow-hidden"
     >
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-3">

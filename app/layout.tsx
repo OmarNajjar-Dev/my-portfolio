@@ -1,6 +1,6 @@
 // app/layout.tsx
-import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
+import BackToTop from "@/components/ui/BackToTop";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 
@@ -53,8 +53,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <div className="flex flex-col gap-20">{children}</div>
         </main>
 
-        {/* Global footer at the bottom */}
-        <Footer />
+        {/* Back to top button */}
+        <BackToTop />
       </body>
     </html>
   );

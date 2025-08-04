@@ -8,11 +8,11 @@ function SkillsSection() {
       {/* Section Header with animation */}
       <AnimateOnScroll direction="left">
         <header>
-          <h2 id="skills-title" className="text-3xl md:text-4xl font-semibold">
+          <h2 id="skills-title" className="text-3xl text-center md:text-4xl font-semibold">
             Skills
           </h2>
 
-          <p className="text-sm text-gray-800 leading-relaxed mb-5">
+          <p className="text-sm text-gray-800 text-center leading-relaxed mb-5">
             I have strong skills in HTML5, CSS3, and JavaScript, with hands-on
             experience in React, Next.js, and Tailwind CSS for building modern,
             responsive web applications. I also have working knowledge of
@@ -33,14 +33,6 @@ function SkillsSection() {
           </AnimateOnScroll>
         ))}
       </ul>
-
-      {/* Footer text */}
-      <footer className="mt-6 p-4 rounded-lg bg-gray-50 border border-gray-100">
-        <p className="text-sm text-gray-600">
-          I&apos;m constantly expanding my skill set and staying up-to-date with
-          the latest web technologies and best practices.
-        </p>
-      </footer>
     </section>
   );
 }

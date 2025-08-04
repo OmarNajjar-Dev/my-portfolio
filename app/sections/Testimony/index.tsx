@@ -10,7 +10,7 @@ function TestimonySection() {
     <section
       id="testimony"
       aria-labelledby="testimony-heading"
-      className="testimony-section relative py-16 md:py-20 lg:py-24 bg-[#f5f5f5] overflow-hidden"
+      className="testimony-section relative py-16 md:py-20 lg:py-24 overflow-hidden"
     >
       {/* Background Pattern */}
       <div className="testimony-background absolute inset-0 opacity-3">
