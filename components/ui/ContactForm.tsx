@@ -29,22 +29,22 @@ export default function ContactForm() {
         <div className="absolute bottom-0 left-0 w-24 h-24 bg-accent/6 rounded-full translate-y-12 -translate-x-12 blur-xl" />
 
         {/* Content */}
-        <div className="relative z-10 p-8 md:p-10">
+        <div className="relative z-10 p-4 md:p-6 lg:p-8 xl:p-10">
           {/* Header */}
-          <div className="text-center mb-10">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-accent/10 to-accent/20 rounded-2xl mb-6 shadow-sm">
-              <Mail className="w-8 h-8 text-accent" />
+          <div className="text-center mb-6 md:mb-8 lg:mb-10">
+            <div className="inline-flex items-center justify-center w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-accent/10 to-accent/20 rounded-xl md:rounded-2xl mb-4 md:mb-6 shadow-sm">
+              <Mail className="w-6 h-6 md:w-8 md:h-8 text-accent" />
             </div>
-            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
+            <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-2 md:mb-3">
               {contactData.form.title}
             </h3>
-            <p className="text-gray-600 text-lg">
+            <p className="text-sm md:text-base lg:text-lg text-gray-600">
               I&apos;ll respond within 24 hours
             </p>
           </div>
 
           {/* Form */}
-          <form onSubmit={handleSubmit} className="space-y-8">
+          <form onSubmit={handleSubmit} className="space-y-6 md:space-y-8">
             {/* Name Field */}
             <FormInput
               name="name"
@@ -98,7 +98,7 @@ export default function ContactForm() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className={`w-full py-4 px-6 rounded-2xl font-bold text-white transition-all duration-300 shadow-lg cursor-pointer ${
+              className={`w-full py-3 md:py-4 px-4 md:px-6 rounded-xl md:rounded-2xl font-bold text-white transition-all duration-300 shadow-lg cursor-pointer ${
                 isSubmitting
                   ? "bg-gray-400 pointer-events-none shadow-gray-400/30"
                   : "bg-gradient-to-r from-accent to-accent/90 hover:from-accent/90 hover:to-accent focus:ring-4 focus:ring-accent/30 focus:outline-none transform hover:scale-[1.02] active:scale-[0.98] shadow-accent/30 hover:shadow-xl hover:shadow-accent/20"
@@ -106,11 +106,13 @@ export default function ContactForm() {
             >
               {isSubmitting ? (
                 <div className="flex items-center justify-center">
-                  <Loader2 className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" />
-                  <span className="font-semibold">Sending...</span>
+                  <Loader2 className="animate-spin -ml-1 mr-2 md:mr-3 h-4 w-4 md:h-5 md:w-5 text-white" />
+                  <span className="text-sm md:text-base font-semibold">
+                    Sending...
+                  </span>
                 </div>
               ) : (
-                <span className="font-semibold">
+                <span className="text-sm md:text-base font-semibold">
                   {contactData.form.submitButton.text}
                 </span>
               )}

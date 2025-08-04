@@ -50,9 +50,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
         {/* Main portfolio content */}
         <main className="mx-auto max-w-[1200px] py-4 md:py-6 lg:py-8 px-[5%]">
-          <div className="flex flex-col gap-12">
-            {children}
-          </div>
+          <div className="flex flex-col gap-12">{children}</div>
         </main>
 
         {/* Back to top button */}

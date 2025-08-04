@@ -14,7 +14,7 @@ export default function IconLink({ icon, href, text }: HeroLinkProps) {
       aria-label={text}
       className="
         inline-flex items-center gap-1.5 sm:gap-2
-        text-accent h-7 sm:h-8 lg:h-9 px-3 sm:px-4 lg:px-5 rounded-sm border-2 border-accent 
+        text-accent h-7 sm:h-8 lg:h-9 px-1.5 md:px-3 sm:px-4 lg:px-5 rounded-sm border-2 border-accent 
         hover:text-primary hover:border-primary hover:scale-105
         focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2
         transition-all duration-200 ease-in-out

@@ -16,8 +16,7 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="flex flex-col-reverse md:flex-row items-center gap-6 md:gap-8 lg:gap-12 py-4 md:py-6 lg:py-8"
-    >
+      className="flex flex-col-reverse md:flex-row items-center gap-6 md:gap-8 lg:gap-12 py-4 md:py-6 lg:py-8">
       {/* text column with fade-in-left animation */}
       <AnimateOnScroll direction="left">
         <div className="space-y-2">
@@ -62,7 +61,7 @@ export default function HeroSection() {
 
       {/* image column with fade-in-up animation */}
       <AnimateOnScroll direction="up" delay={200}>
-        <figure className="shrink-0 self-center w-[300px] h-[300px]">
+        <figure className="shrink-0 self-center w-[250px] h-[250px] md:w-[300px] md:h-[300px]">
           <Image
             src={heroData.image.src}
             alt={heroData.image.alt}
