@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Skills } from "@/app/sections/Skills/data";
+import { Skills } from "@/components/sections/Skills/data";
 
 interface SkillCardProps {
   skill: Skills;
