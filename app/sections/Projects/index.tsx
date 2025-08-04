@@ -16,7 +16,7 @@ export default function ProjectsSection() {
         >
           {projectsData.title}
         </h2>
-        <p className="text-sm text-center text-gray-800 leading-relaxed max-w-3xl mx-auto">
+        <p className="text-sm text-center text-gray-800 leading-relaxed max-w-5xl mx-auto">
           {projectsData.description}
         </p>
       </header>
