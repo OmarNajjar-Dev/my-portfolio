@@ -73,20 +73,6 @@ export default function ContactForm() {
               error={errors.email}
             />
 
-            {/* Phone Field */}
-            <FormInput
-              name="phone"
-              id="phone"
-              label={contactData.form.fields.phone.label}
-              type="tel"
-              placeholder={contactData.form.fields.phone.placeholder}
-              required={contactData.form.fields.phone.required}
-              autoComplete={contactData.form.fields.phone.autoComplete}
-              value={formData.phone}
-              onChange={(e) => handleInputChange("phone", e.target.value)}
-              error={errors.phone}
-            />
-
             {/* Message Field */}
             <div className="space-y-3">
               <FormInput
@@ -112,9 +98,9 @@ export default function ContactForm() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className={`w-full py-4 px-6 rounded-2xl font-bold text-white transition-all duration-300 shadow-lg ${
+              className={`w-full py-4 px-6 rounded-2xl font-bold text-white transition-all duration-300 shadow-lg cursor-pointer ${
                 isSubmitting
-                  ? "bg-gray-400 cursor-not-allowed shadow-gray-400/30"
+                  ? "bg-gray-400 pointer-events-none shadow-gray-400/30"
                   : "bg-gradient-to-r from-accent to-accent/90 hover:from-accent/90 hover:to-accent focus:ring-4 focus:ring-accent/30 focus:outline-none transform hover:scale-[1.02] active:scale-[0.98] shadow-accent/30 hover:shadow-xl hover:shadow-accent/20"
               }`}
             >

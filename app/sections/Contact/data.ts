@@ -22,15 +22,6 @@ export interface ContactForm {
       required: boolean;
       autoComplete: string;
     };
-    phone: {
-      label: string;
-      placeholder: string;
-      type: string;
-      required: boolean;
-      autoComplete: string;
-      countryCode: string;
-      countryFlag: string;
-    };
     message: {
       label: string;
       placeholder: string;
@@ -86,15 +77,6 @@ export const contactData: ContactSection = {
         type: "email",
         required: true,
         autoComplete: "email",
-      },
-      phone: {
-        label: "Phone Number",
-        placeholder: "71 123 456",
-        type: "tel",
-        required: false,
-        autoComplete: "tel",
-        countryCode: "+961",
-        countryFlag: "🇱🇧",
       },
       message: {
         label: "Message",
