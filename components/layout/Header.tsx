@@ -7,7 +7,7 @@ import AnimateOnScroll from "../ui/AnimateOnScroll";
 export default function Header() {
   return (
     <AnimateOnScroll direction="left">
-      <header className="flex justify-between items-center mx-auto max-w-[1200px] pt-[1rem] pb-15 px-[5%]">
+      <header className="flex justify-between items-center mx-auto max-w-[1200px] pt-[1rem] pb-6 px-[5%]">
         {/* Website logo or name */}
         <div>
           <Link

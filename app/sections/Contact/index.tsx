@@ -20,7 +20,7 @@ function ContactSection() {
     <section
       id="contact"
       aria-labelledby="contact-heading"
-      className="contact-section relative py-16 md:py-20 lg:py-24 overflow-hidden"
+      className="contact-section relative py-6 md:py-8 lg:py-12 overflow-hidden"
     >
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-3">
@@ -32,14 +32,14 @@ function ContactSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <AnimateOnScroll direction="up">
-          <div className="text-center mb-16 md:mb-20">
+          <div className="text-center mb-6 md:mb-8 lg:mb-10">
             <h2
               id="contact-heading"
-              className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6"
+              className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3"
             >
               {contactData.title}
             </h2>
-            <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-xl text-gray-600 mb-4 max-w-3xl mx-auto leading-relaxed">
               {contactData.subtitle}
             </p>
             <div className="w-20 h-1 bg-gradient-to-r from-accent via-accent/80 to-accent/60 mx-auto rounded-full shadow-sm"></div>

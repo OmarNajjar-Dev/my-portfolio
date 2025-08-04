@@ -10,7 +10,7 @@ function TestimonySection() {
     <section
       id="testimony"
       aria-labelledby="testimony-heading"
-      className="testimony-section relative py-16 md:py-20 lg:py-24 overflow-hidden"
+      className="testimony-section relative py-4 md:py-6 lg:py-8 overflow-hidden"
     >
       {/* Background Pattern */}
       <div className="testimony-background absolute inset-0 opacity-3">
@@ -21,10 +21,10 @@ function TestimonySection() {
       <div className="testimony-container container mx-auto px-4 max-w-4xl lg:max-w-5xl relative z-10">
         {/* Section Header */}
         <AnimateOnScroll direction="left">
-          <header className="testimony-header text-center mb-12 md:mb-16">
+          <header className="testimony-header text-center mb-6 md:mb-8 lg:mb-10">
             <h2
               id="testimony-heading"
-              className="testimony-title text-2xl md:text-3xl lg:text-4xl font-bold text-[#2d3748] mb-4"
+              className="testimony-title text-2xl md:text-3xl lg:text-4xl font-bold text-[#2d3748] mb-3"
             >
               Testimony
             </h2>
@@ -89,14 +89,6 @@ function TestimonySection() {
             <div className="testimony-glow absolute -inset-2 md:-inset-4 bg-gradient-to-r from-[#2d3748] to-[#4a5568] rounded-xl md:rounded-2xl blur opacity-5 -z-10"></div>
           </article>
         </AnimateOnScroll>
-
-        {/* Footer */}
-        <footer className="testimony-footer mt-12 md:mt-16 text-center">
-          <p className="testimony-footer-text text-sm text-[#718096] font-medium">
-            This testimonial reflects professional recognition and validation of
-            my work.
-          </p>
-        </footer>
       </div>
     </section>
   );

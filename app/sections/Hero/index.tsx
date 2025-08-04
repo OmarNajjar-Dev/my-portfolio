@@ -16,7 +16,7 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="flex flex-col-reverse md:flex-row items-center gap-5"
+      className="flex flex-col-reverse md:flex-row items-center gap-6 md:gap-8 lg:gap-12 py-4 md:py-6 lg:py-8"
     >
       {/* text column with fade-in-left animation */}
       <AnimateOnScroll direction="left">
