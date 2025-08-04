@@ -60,7 +60,7 @@ function TestimonySection() {
                         alt={`${testimonial.name} - ${testimonial.title}`}
                         width={96}
                         height={96}
-                        className="testimony-avatar-image relative w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 rounded-full object-cover border-4 border-white shadow-md"
+                        className="testimony-avatar-image relative w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 rounded-full object-cover border-4 border-white shadow-md transition-all duration-300 hover:scale-110"
                         priority
                       />
                     </div>
