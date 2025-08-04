@@ -69,6 +69,38 @@ NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=your_template_id
 NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=your_public_key
 ```
 
+## SEO & Metadata
+
+The portfolio uses comprehensive SEO metadata for better search engine visibility and social sharing. The metadata is centralized in `lib/metadata.ts` and includes:
+
+- **Open Graph** tags for social media sharing
+- **Twitter Card** metadata for Twitter sharing
+- **Robots** directives for search engine crawling
+- **Keywords** and **descriptions** for SEO
+- **Canonical URLs** to prevent duplicate content
+
+### Using Metadata Utilities
+
+```typescript
+// For the main layout (already implemented)
+import { generateMetadata } from "@/lib/metadata";
+export const metadata: Metadata = generateMetadata();
+
+// For page-specific metadata
+import { createPageMetadata } from "@/lib/metadata";
+export const metadata: Metadata = createPageMetadata(
+  "Projects",
+  "View my latest web development projects",
+  "https://example.com/projects-image.png"
+);
+```
+
+### Available Metadata Functions
+
+- `generateMetadata()` - Generate default metadata
+- `createPageMetadata(title?, description?, image?)` - Create page-specific metadata
+- `siteMetadata` - Access centralized metadata configuration
+
 ## Skills & Technologies
 
 - HTML5, CSS3, JavaScript
