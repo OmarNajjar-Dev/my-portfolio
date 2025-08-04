@@ -1,5 +1,5 @@
 import ProjectCard from "@/components/ui/ProjectCard";
-import { projects } from "./data";
+import { projectsData } from "./data";
 import AnimateOnScroll from "@/components/ui/AnimateOnScroll";
 
 export default function ProjectsSection() {
@@ -14,16 +14,15 @@ export default function ProjectsSection() {
           id="projects-title"
           className="text-3xl text-center md:text-4xl font-semibold mb-3"
         >
-          Projects
+          {projectsData.title}
         </h2>
         <p className="text-sm text-center text-gray-800 leading-relaxed max-w-3xl mx-auto">
-          Here are some of my recent projects that showcase my skills and
-          experience.
+          {projectsData.description}
         </p>
       </header>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr">
-        {projects.map((project, index) => (
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 auto-rows-fr">
+        {projectsData.projects.map((project, index) => (
           <AnimateOnScroll key={project.id} direction="up" delay={index * 150}>
             <ProjectCard project={project} index={index} />
           </AnimateOnScroll>

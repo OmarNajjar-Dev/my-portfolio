@@ -1,10 +1,10 @@
-import { testimonials } from "./data";
+import { testimonyData } from "./data";
 import AnimateOnScroll from "@/components/ui/AnimateOnScroll";
 import Image from "next/image";
 import { Quote } from "lucide-react";
 
 function TestimonySection() {
-  const testimonial = testimonials[0];
+  const testimonial = testimonyData.testimonials[0];
 
   return (
     <section
@@ -26,7 +26,7 @@ function TestimonySection() {
               id="testimony-heading"
               className="testimony-title text-2xl md:text-3xl lg:text-4xl font-bold text-[#2d3748] mb-3"
             >
-              Testimony
+              {testimonyData.title}
             </h2>
             <div className="testimony-divider w-12 h-0.5 bg-gradient-to-r from-[#2d3748] to-[#4a5568] mx-auto rounded-full"></div>
           </header>
