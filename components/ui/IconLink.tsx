@@ -1,4 +1,4 @@
-// app/sections/Hero/HeroLink.tsx
+"use client"
 import Link from "next/link";
 
 interface HeroLinkProps {
@@ -8,9 +8,31 @@ interface HeroLinkProps {
 }
 
 export default function IconLink({ icon, href, text }: HeroLinkProps) {
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    // Check if it's a hash link (internal navigation)
+    if (href.startsWith("#")) {
+      e.preventDefault();
+      const targetId = href.substring(1);
+      const targetElement = document.getElementById(targetId);
+
+      if (targetElement) {
+        // Smooth scroll to the target section
+        targetElement.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+
+        // Update URL without page reload
+        window.history.pushState(null, "", href);
+      }
+    }
+    // For external links, let the default behavior handle it
+  };
+
   return (
     <Link
       href={href}
+      onClick={handleClick}
       aria-label={text}
       className="
         inline-flex items-center gap-1.5 sm:gap-2
