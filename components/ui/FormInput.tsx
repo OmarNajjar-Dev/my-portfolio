@@ -48,7 +48,7 @@ export default function FormInput({
   value,
 }: FormInputProps) {
   const inputId = id || name;
-  const baseClasses = `relative w-full p-3 border-2 text-md rounded-md transition-all ${
+  const baseClasses = `relative w-full p-2 md:p-3 border-2 text-md rounded-md transition-all ${
     error
       ? "border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500/30"
       : "border-accent focus:border-accent focus:ring-2 focus:ring-accent/30"
