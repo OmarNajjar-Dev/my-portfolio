@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { ExternalLink, Github } from "lucide-react";
 import { Project } from "@/components/sections/Projects/data";
-
 interface ProjectCardProps {
   project: Project;
   index: number;

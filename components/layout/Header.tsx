@@ -1,4 +1,3 @@
-import Link from "next/link";
 import styles from "@/styles/effects.module.css";
 import { FaLinkedin as Linkedin, FaGithub as Github } from "react-icons/fa";
 import { MdEmail as Email } from "react-icons/md";
@@ -10,13 +9,13 @@ export default function Header() {
       <header className="flex justify-between items-center mx-auto max-w-[1200px] pt-[1rem] pb-6 px-[5%]">
         {/* Website logo or name */}
         <div>
-          <Link
+          <a
             href="#home"
             aria-label="Go to top"
             className="font-semibold text-primary text-lg md:text-xl"
           >
             Omar Najjar
-          </Link>
+          </a>
         </div>
 
         {/* Navigation links */}

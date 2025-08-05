@@ -1,6 +1,4 @@
-"use client"
-
-import Link from "next/link";
+"use client";
 
 interface HeroLinkProps {
   icon?: React.ReactElement;
@@ -31,7 +29,7 @@ export default function IconLink({ icon, href, text }: HeroLinkProps) {
   };
 
   return (
-    <Link
+    <a
       href={href}
       onClick={handleClick}
       aria-label={text}
@@ -53,6 +51,6 @@ export default function IconLink({ icon, href, text }: HeroLinkProps) {
         </span>
       )}
       <span className="whitespace-nowrap">{text}</span>
-    </Link>
+    </a>
   );
 }
