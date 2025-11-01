@@ -76,9 +76,9 @@ export const sendEmail = async (
     emailjs.init(config.publicKey);
 
     const templateParams = {
-      from_name: formData.name.trim(),
-      from_email: formData.email.trim(),
-      from_phone: formData.phone.trim() || "Not provided",
+      name: formData.name.trim(),
+      email: formData.email.trim(),
+      phone: formData.phone.trim() || "Not provided",
       message: formData.message.trim(),
       to_name: "Portfolio Owner",
     };
